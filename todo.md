@@ -1,0 +1,1 @@
+- [ ] Try changing the build output of a svelte app as the extension page to interact with the saved articles in the DB
