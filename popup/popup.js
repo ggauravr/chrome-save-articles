@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const article = {
             url: window.location.href,
+            title: document.title,
             datePublished: document.querySelector('meta[property="article:published_time"]')?.content || null,
             author: document.querySelector('meta[name="author"]')?.content || null,
             description: document.querySelector('meta[name="description"]')?.content || document.body.innerText.slice(0, 100) + '...',
@@ -36,19 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         return article;
-
-        // chrome.storage.local.get(['savedArticles'], (result) => {
-        //     console.log('get savedArticles', result);
-        //     const savedArticles = result.savedArticles || [];
-        //     savedArticles.push(article);
-            
-        //     chrome.storage.local.set({ savedArticles }, () => {
-        //         chrome.storage.local.get(['savedArticles'], (result) => {
-        //             console.log('get savedArticles after set', result);
-        //         });
-        //         // TODO: Add a message to the status container
-        //     });
-        // });
     }
 
     function saveArticleToDB(article) {

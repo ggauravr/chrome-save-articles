@@ -18,13 +18,17 @@ async function displayArticles() {
         articles.forEach(article => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td class="border border-gray-300 p-2">${article.url}</td>
+                <td class="border border-gray-300 p-2"><a href="${article.url}" target="_blank">${article.title}</a></td>
                 <td class="border border-gray-300 p-2">${article.datePublished || 'N/A'}</td>
                 <td class="border border-gray-300 p-2">${article.author || 'N/A'}</td>
                 <td class="border border-gray-300 p-2">${article.description || 'N/A'}</td>
                 <td class="border border-gray-300 p-2">${article.keywords || 'N/A'}</td>
+                <td class="border border-gray-300 p-2">${article.timestamp || 'N/A'}</td>
+                <td class="border border-gray-300 p-2">${article.wordCount || 'N/A'}</td>
+                <td class="border border-gray-300 p-2">${article.approximateReadingTimeInMinutes || 'N/A'}</td>
+                <td class="border border-gray-300 p-2">${article.site || 'N/A'}</td>
                 <td class="border border-gray-300 p-2">
-                    <button class="text-red-500" onclick="deleteArticle('${article.url}')">Delete</button>
+                    <button class="text-red-500" onclick="deleteArticle('${article.id}')">Delete</button>
                 </td>
             `;
             tableBody.appendChild(row);
