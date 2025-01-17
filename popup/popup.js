@@ -43,8 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('db', db);
         console.log('db.articles', db.articles);
         db.articles.add(article)
-            .then(() => {
+            .then(async () => {
                 console.log('Article saved to IndexedDB');
+
+                try {
+                    const response = await fetch('http://localhost:5173/api/bookmark', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({url: article.url})
+                    });
+                    console.log('response', response);
+                } catch (error) {
+                    console.error('Error posting article to server:', error);
+                }
             })
             .catch((error) => {
                 console.error('Error saving article to IndexedDB:', error);
